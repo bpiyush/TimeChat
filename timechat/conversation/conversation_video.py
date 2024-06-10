@@ -16,7 +16,9 @@ from enum import auto, Enum
 from typing import List, Tuple, Any
 import os
 from timechat.common.registry import registry
-from timechat.processors.video_processor import ToTHWC, ToUint8, load_video
+from timechat.processors.video_processor import (
+    ToTHWC, ToUint8, load_video, load_video_cv2
+)
 from timechat.processors import Blip2ImageEvalProcessor
 
 
@@ -234,13 +236,14 @@ class Chat:
         conv.messages[-1][1] = output_text
         return output_text, output_token.cpu().numpy()
 
-    def upload_video_without_audio(self, video_path, conv, img_list, n_frms=8):
+    def upload_video_without_audio(self, video_path, conv, img_list, n_frms=8, video_loader="load_video"):
         msg = ""
         if isinstance(video_path, str):  # is a video path
             ext = os.path.splitext(video_path)[-1].lower()
             # print(video_path)
             # image = self.vis_processor(image).unsqueeze(0).to(self.device)
-            video, msg = load_video(
+            video_loader = eval(video_loader)
+            video, msg = video_loader(
                 video_path=video_path,
                 n_frms=n_frms,
                 height=224,

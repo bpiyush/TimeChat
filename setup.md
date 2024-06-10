@@ -6,7 +6,8 @@ pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --e
 
 pip install -r requirements_specific.txt
 pip install --no-deps peft==0.5.0
-!pip install --no-deps accelerate==0.23.0
+pip install --no-deps accelerate==0.23.0
+pip install jupyterlab ipdb
 ```
 
 Download checkpoints
