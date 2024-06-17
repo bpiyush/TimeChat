@@ -118,7 +118,7 @@ def get_llm_answer(
         "Follow the instructions carefully and explain your answers in detail."
     img_list = []
     llm_message = chat.upload_video_without_audio(
-        video_path, chat_state, img_list, video_loader="load_video_cv2", n_frms=96,
+        video_path, chat_state, img_list, video_loader="load_video_cv2", n_frms=8,
     )
 
 
@@ -152,7 +152,7 @@ def get_llm_answer(
         "Follow the instructions carefully and explain your answers in detail."
     img_list = []
     llm_message = chat.upload_video_without_audio(
-        video_path, chat_state, img_list, video_loader="load_video_cv2", n_frms=96,
+        video_path, chat_state, img_list, video_loader="load_video_cv2", n_frms=8,
     )
 
 
